@@ -10,8 +10,3 @@ function validarEvento() {
 function seleccionarModalidad(modalidad) {
     // Redirigir a la siguiente pantalla (selección de equipos)
     window.location.href = 'seleccion-equipos.html?modalidad=' + encodeURIComponent(modalidad);
-}
-function seleccionarModalidad(modalidad) {
-    // Redirigir a la siguiente pantalla (selección de equipos)
-    window.location.href = 'seleccion-equipos.html?modalidad=' + encodeURIComponent(modalidad);
-}
