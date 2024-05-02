@@ -1,18 +1,41 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Plataforma de Sorteo</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <div class="container">
-        <h1>Introduzca el nombre de su evento</h1>
-        <input type="text" id="eventoInput" placeholder="Nombre del evento">
-        <button onclick="validarEvento()">Continuar</button>
-    </div>
+<div id="intro-screen">
+  <h1>Introduzca el nombre de su evento</h1>
+  <input type="text" id="event-name" />
+  <button id="continue-btn">Continuar</button>
+</div>
 
-    <script src="script.js"></script>
-</body>
-</html>
+<div id="modes-screen" class="hidden">
+  <h1>Modalidades</h1>
+  <div id="mode-selector">
+    <button class="mode-btn" data-mode="all-vs-all">Todos contra todos</button>
+    <button class="mode-btn" data-mode="team-vs-team">Equipo contra equipo</button>
+  </div>
+  <div id="team-size-selector" class="hidden">
+    <h2>Seleccione el tamaño del equipo</h2>
+    <button class="team-size-btn" data-team-size="2vs2">2vs2</button>
+    <button class="team-size-btn" data-team-size="4vs4">4vs4</button>
+    <button class="team-size-btn" data-team-size="6vs6">6vs6</button>
+    <button class="team-size-btn" data-team-size="9vs9">9vs9</button>
+    <button class="team-size-btn" data-team-size="10vs10">10vs10</button>
+    <button class="team-size-btn" data-team-size="custom">Personalizado</button>
+  </div>
+</div>
+
+<div id="teams-screen" class="hidden">
+  <h1>Ingrese los nombres de los equipos</h1>
+  <input type="text" id="team-name-1" placeholder="Nombre del equipo 1" />
+  <input type="text" id="team-name-2" placeholder="Nombre del equipo 2" />
+  <button id="next-btn">Siguiente</button>
+</div>
+
+<div id="participants-screen" class="hidden">
+  <h1>Ingrese los nombres de los participantes</h1>
+  <textarea id="participants-input"></textarea>
+  <button id="generate-btn">Generar</button>
+</div>
+
+<div id="results-screen" class="hidden">
+  <h1 id="event-name-display"></h1>
+  <div id="team-display-1"></div>
+  <div id="team-display-2"></div>
+</div>
