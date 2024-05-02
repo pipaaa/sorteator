@@ -1,64 +1,75 @@
-const continueBtn = document.getElementById("continue-btn");
-const modeSelector = document.getElementById("mode-selector");
-const teamSizeSelector = document.getElementById("team-size-selector");
-const nextBtn = document.getElementById("next-btn");
-const participantsInput = document.getElementById("participants-input");
-const generateBtn = document.getElementById("generate-btn");
-const eventNameDisplay = document.getElementById("event-name-display");
-const teamDisplay1 = document.getElementById("team-display-1");
-const teamDisplay2 = document.getElementById("team-display-2");
+const eventForm = document.getElementById('event-form');
+const raffleContainer = document.getElementById('raffle-container');
+const eventTitle = document.getElementById('event-title');
+const team1NameDisplay = document.getElementById('team1-name-display');
+const team2NameDisplay = document.getElementById('team2-name-display');
+const playerInputs = document.getElementById('player-inputs');
+const addPlayerButton = document.getElementById('add-player');
+const generateRaffleButton = document.getElementById('generate-raffle');
+const raffleResults = document.getElementById('raffle-results');
 
-continueBtn.addEventListener("click", () => {
-  const eventName = document.getElementById("event-name").value;
-  if (eventName.trim() === "") return;
-  introScreen.classList.add("hidden");
-  modeSelector.classList.remove("hidden");
+let playerCount = 0;
+let players = [];
+
+eventForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const eventName = document.getElementById('event-name').value;
+    const team1Name = document.getElementById('team1-name').value;
+    const team2Name = document.getElementById('team2-name').value;
+
+    eventTitle.textContent = eventName;
+    team1NameDisplay.textContent = team1Name;
+    team2NameDisplay.textContent = team2Name;
+
+    raffleContainer.style.display = 'block';
+    eventForm.style.display = 'none';
 });
 
-const modeButtons = document.getElementsByClassName("mode-btn");
-for (const modeButton of modeButtons) {
-  modeButton.addEventListener("click", () => {
-    const mode = modeButton.dataset.mode;
-    if (mode === "team-vs-team") {
-      modeSelector.classList.add("hidden");
-      teamSizeSelector.classList.remove("hidden");
-    } else {
-      // handle all-vs-all mode
-    }
-  });
-}
+addPlayerButton.addEventListener('click', () => {
+    playerCount++;
 
-const teamSizeButtons = document.getElementsByClassName("team-size-btn");
-for (const teamSizeButton of teamSizeButtons) {
-  teamSizeButton.addEventListener("click", () => {
-    const teamSize = teamSizeButton.dataset.teamSize;
-    if (teamSize === "team-vs-team") {
-      teamSizeSelector.classList.add("hidden");
-      teamsScreen.classList.remove("hidden");
-    } else {
-      // handle other team sizes
-    }
-  });
-}
+    const playerInput = document.createElement('input');
+    playerInput.type = 'text';
+    playerInput.placeholder = `Player ${playerCount}`;
+    playerInput.id = `player${playerCount}`;
 
-nextBtn.addEventListener("click", () => {
-  const teamName1 = document.getElementById("team-name-1").value;
-  const teamName2 = document.getElementById("team-name-2").value;
-  if (teamName1.trim() === "" || teamName2.trim() === "") return;
-  teamsScreen.classList.add("hidden");
-  participantsScreen.classList.remove("hidden");
+    playerInputs.insertBefore(playerInput, addPlayerButton);
 });
 
-generateBtn.addEventListener("click", () => {
-  const participants = participantsInput.value
-    .split("\n")
-    .map((participant) => participant.trim())
-    .filter((participant) => participant !== "");
-  if (participants.length < 4) return;
-  participantsScreen.classList.add("hidden");
-  resultsScreen.classList.remove("hidden");
-  eventNameDisplay.textContent = document.getElementById("event-name").value;
-  teamDisplay1.textContent =teamName1;
-  teamDisplay2.textContent = teamName2;
-  // generate teams based on participants
+generateRaffleButton.addEventListener('click', () => {
+    players = [];
+
+    for (let i = 1; i <= playerCount; i++) {
+        const player = document.getElementById(`player${i}`).value;
+        players.push(player);
+    }
+
+    if (players.length < 18) {
+        alert('Please add at least 18 players to generate the raffle.');
+        return;
+    }
+
+    raffleResults.innerHTML = '';
+
+    const teamSize = 9;
+    const teamCount = Math.ceil(players.length / teamSize);
+
+    for (let i = 0; i < teamCount; i++) {
+        const teamPlayers = players.splice(0, teamSize);
+        const teamResult = document.createElement('div');
+        teamResult.classList.add('team-result');
+
+        teamResult.innerHTML = `
+            <h3>Team ${i + 1}</h3>
+            <ul>
+                ${teamPlayers.map((player, index) => `<li>${index + 1}. ${player}</li>`).join('')}
+            </ul>
+        `;
+
+        raffleResults.appendChild(teamResult);
+    }
+
+    playerInputs.style.display = 'none';
+    generateRaffleButton.style.display = 'none';
 });
