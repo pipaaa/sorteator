@@ -1,50 +1,102 @@
-.hidden {
-  display: none;
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
 }
 
-#mode-selector,
-#team-size-selector {
-  display: flex;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  scroll-snap-type: x mandatory;
+.container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.mode-btn,
-.team-size-btn {
-  flex-shrink: 0;
-  flex-grow: 1;
-  scroll-snap-align: start;
-  padding: 16px;
-  border: none;
-  background-color: #f2f2f2;
-  cursor: pointer;
+.intro {
+    text-align: center;
 }
 
-#teams-screen {
-  display: flex;
-  justify-content: space-between;
+.intro h1 {
+    margin-top: 0;
 }
 
-#participants-screen {
-  max-height: 50vh;
-  overflow-y: auto;
+.event-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-#results-screen {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 100vh;
+.event-form label {
+    margin-bottom: 10px;
 }
 
-#team-display-1,
-#team-display-2 {
-  width: 45%;
-  height: 80%;
-  border: 2px solid black;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+.event-form input[type="text"] {
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+}
+
+.event-form button[type="submit"] {
+    background-color: #4CAF50;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.event-form button[type="submit"]:hover {
+    background-color: #3e8e41;
+}
+
+.raffle-container {
+    display: none;
+}
+
+.raffle-container h2 {
+    text-align: center;
+    margin-top: 0;
+}
+
+.team-names {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.team-names span {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.player-inputs {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.player-inputs input[type="text"] {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+}
+
+.player-inputs button {
+    background-color: #4CAF50;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.player-inputs button:hover {
+    background-color: #3e8e41;
+}
+
+.raffle-results {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #f7f7f7;
+    border: 1px solid #ddd;
 }
