@@ -1,43 +1,50 @@
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
+.hidden {
+  display: none;
 }
 
-.container {
-    max-width: 600px;
-    margin: 50px auto;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    text-align: center;
+#mode-selector,
+#team-size-selector {
+  display: flex;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x mandatory;
 }
 
-button {
-    padding: 10px 20px;
-    font-size: 16px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    margin: 10px;
+.mode-btn,
+.team-size-btn {
+  flex-shrink: 0;
+  flex-grow: 1;
+  scroll-snap-align: start;
+  padding: 16px;
+  border: none;
+  background-color: #f2f2f2;
+  cursor: pointer;
 }
 
-input[type="text"] {
-    width: 100%;
-    padding: 10px;
-    box-sizing: border-box;
-    margin-bottom: 20px;
+#teams-screen {
+  display: flex;
+  justify-content: space-between;
 }
 
-.modalidades {
-    display: flex;
-    justify-content: center;
+#participants-screen {
+  max-height: 50vh;
+  overflow-y: auto;
 }
 
-.modalidades button {
-    margin: 0 10px;
+#results-screen {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100vh;
 }
 
-/* Puedes agregar más estilos para animaciones y efectos según lo necesites */
+#team-display-1,
+#team-display-2 {
+  width: 45%;
+  height: 80%;
+  border: 2px solid black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
