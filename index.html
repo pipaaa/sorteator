@@ -1,44 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Raffle Generator</title>
-    <link rel="stylesheet" href="styles.css">
+	<title>Text-based Adventure Game</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <div class="intro">
-            <h1>Raffle Generator</h1>
-            <form id="event-form">
-                <label for="event-name">Event Name:</label>
-                <input type="text" id="event-name" required>
-                <label for="team1-name">Team 1 Name:</label>
-                <input type="text" id="team1-name" required>
-                <label for="team2-name">Team 2 Name:</label>
-                <input type="text" id="team2-name" required>
-                <button type="submit">Next</button>
-            </form>
-        </div>
-        <div class="raffle-container">
-            <h2 id="event-title"></h2>
-            <div class="team-names">
-                <span id="team1-name-display"></span>
-                <span id="team2-name-display"></span>
-            </div>
-            <div class="player-inputs">
-                <input type="text" id="player1" placeholder="Player 1">
-                <input type="text" id="player2" placeholder="Player 2">
-                <!-- Add more input fields dynamically -->
-                <button id="add-player">Add Player</button>
-                <button id="generate-raffle">Generate Raffle</button>
-            </div>
-            <div class="raffle-results">
-                <!-- Raffle results will be displayed here -->
-            </div>
-        </div>
-    </div>
-
-    <script src="script.js"></script>
+	<div id="game"></div>
+	<script src="game.js"></script>
 </body>
 </html>
